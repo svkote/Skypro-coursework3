@@ -9,4 +9,4 @@ class Post:
         self.pk = pk
 
     def __repr__(self):
-        return f'Пост "{self.poster_name}", ID: {self.pk}'
+        return f'Пост от {self.poster_name}, ID: {self.pk}'
