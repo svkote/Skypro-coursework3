@@ -1,6 +1,8 @@
 def get_posts_all():
     """Возвращает посты"""
-    ...
+    with open('data/posts.json', 'r', encoding='utf-8') as file:
+        post_list = []
+        
 
 
 def get_posts_by_user(user_name):
