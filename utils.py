@@ -1,6 +1,7 @@
 import json
 
 from main.post import Post
+from main.comment import Comment
 
 
 def get_posts_all():
@@ -62,8 +63,33 @@ def get_post_by_pk(pk):
     return search_post_list_by_pk
 
 
+def get_comments_all():
+    """Возвращает все посты"""
+    comments_list = []
+
+    with open('data/comments.json', 'r', encoding='utf-8') as file:
+        comments_data = json.load(file)
+
+    for comment in comments_data:
+        comments_list.append(Comment(
+            comment['post_id'],
+            comment['commenter_name'],
+            comment['comment'],
+            comment['pk']
+        ))
+
+    return comments_list
+
+
 def get_comments_by_post_id(post_id):
     """Возвращает комментарии определенного поста.
     Функция должна вызывать ошибку `ValueError` если такого поста нет
     и пустой список, если у поста нет комментов."""
-    ...
+    search_comment_list_by_pk = []
+    comment_list = get_comments_all()
+
+    for comment in comment_list:
+        if comment.pk == post_id:
+            search_comment_list_by_pk.append(comment)
+
+    return search_comment_list_by_pk
