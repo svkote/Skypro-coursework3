@@ -4,7 +4,7 @@ from main.post import Post
 from main.comment import Comment
 
 
-def get_posts_all():
+def get_posts_all() -> list:
     """Возвращает все посты"""
     post_list = []
 
@@ -25,7 +25,7 @@ def get_posts_all():
     return post_list
 
 
-def get_posts_by_user(user_name):
+def get_posts_by_user(user_name) -> list:
     """Возвращает посты определенного пользователя.
     Функция должна вызывать ошибку `ValueError` если такого пользователя нет
      и пустой список, если у пользователя нет постов."""
@@ -39,7 +39,7 @@ def get_posts_by_user(user_name):
     return post_list_by_user
 
 
-def search_for_posts(query):
+def search_for_posts(query) -> list:
     """Возвращает список постов по ключевому слову"""
     search_post_list = []
     post_list = get_posts_all()
@@ -51,19 +51,18 @@ def search_for_posts(query):
     return search_post_list
 
 
-def get_post_by_pk(pk):
+def get_post_by_pk(pk: int):
     """Возвращает один пост по его идентификатору."""
-    search_post_list_by_pk = []
     post_list = get_posts_all()
 
     for post in post_list:
         if post.pk == pk:
-            search_post_list_by_pk.append(post)
+            return post
 
-    return search_post_list_by_pk
+    return
 
 
-def get_comments_all():
+def get_comments_all() -> list:
     """Возвращает все посты"""
     comments_list = []
 
@@ -81,7 +80,7 @@ def get_comments_all():
     return comments_list
 
 
-def get_comments_by_post_id(post_id):
+def get_comments_by_post_id(post_id: int) -> list:
     """Возвращает комментарии определенного поста.
     Функция должна вызывать ошибку `ValueError` если такого поста нет
     и пустой список, если у поста нет комментов."""
