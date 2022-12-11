@@ -88,7 +88,7 @@ def get_comments_by_post_id(post_id: int) -> list:
     comment_list = get_comments_all()
 
     for comment in comment_list:
-        if comment.pk == post_id:
+        if comment.post_id == post_id:
             search_comment_list_by_pk.append(comment)
 
     return search_comment_list_by_pk
