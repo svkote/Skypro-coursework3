@@ -18,8 +18,8 @@ def page_post(post_id):
     return render_template('post.html', post=found_post, comments=comments_found_post)
 
 
-# @main_blueprint.route('/search', method=['GET'])
-# def page_search():
-#     query = request.args.get('s')
-#     found_posts = search_for_posts(query)
-#     return render_template('search.html', posts=found_posts)
+@main_blueprint.route('/search', methods=['GET'])
+def page_search():
+    query = request.args.get('s')
+    found_posts = search_for_posts(query)
+    return render_template('search.html', posts=found_posts)
