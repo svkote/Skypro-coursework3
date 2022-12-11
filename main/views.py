@@ -23,3 +23,9 @@ def page_search():
     query = request.args.get('s')
     found_posts = search_for_posts(query)
     return render_template('search.html', posts=found_posts)
+
+
+@main_blueprint.route('/users/<username>')
+def page_users(username):
+    found_posts = get_posts_by_user(username)
+    return render_template('user-feed.html', posts=found_posts)
